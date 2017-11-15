@@ -32,7 +32,7 @@ app.use(stylus.middleware({
     compile: compile
 }))
 
-//index page - Planets
+//index page - Planets for sale (planets)
 app.get('/', (req, res) => {
   db.collection('planets').find().toArray((err, result) => {
     if (err) return console.log(err)
@@ -40,33 +40,58 @@ app.get('/', (req, res) => {
   })
 })
 
+//get request for rental planets
+app.get('/rent', (req, res) => {
+  db.collection('planetsforrent').find().toArray((err, result) => {
+    if (err) return console.log(err)
+    res.render('pages/rent', {planetsforrent: result})
+  })
+})
+
+//posting all planets to the index page 
 app.post('/planets', (req, res) => {
   db.collection('planets').save(req.body, (err, result) => {
     if (err) return console.log(err)
     console.log('saved planet to database')
-    res.redirect('/')
+    alert("Planet has been posted for Sale");
+    res.redirect('/planets')
   })
 })
 
-//index page - Planets for Rent.
-// app.post('/rentedPlanets', (req, res) => {
-//   db.collection('rentedPlanets').save(req.body, (err, result) => {
-//     if (err) return console.log(err)
-//     console.log('saved rented planet to database')
-//     res.redirect('/')
-//   })
-// })
+//index page - adding Planets for Rent.
+app.post('/planetsforrent', (req, res) => {
+  db.collection('planetsforrent').save(req.body, (err, result) => {
+    if (err) 
+      {
+        return console.log(err)
+        res.redirect('/rent')
+      }
+      else {
+        console.log('saved rented planet to database')
+        res.redirect('/planetsforrent')
+      }
+  })
+})
+
 
 //home page
 app.get('/home', (req, res) => {
     res.render('pages/home')
 })
 
-//planets for sale page
+//posting planets for sale page
 app.get('/planets', (req, res) => {
     db.collection('planets').find().toArray((err, result) => {
     if (err) return console.log(err)
     res.render('pages/planets', {planets: result})
+  })
+})
+
+//posting all rental planets on the platnetsforrent page.
+app.get('/planetsforrent', (req, res) => {
+    db.collection('planetsforrent').find().toArray((err, result) => {
+    if (err) return console.log(err)
+    res.render('pages/planetsforrent', {planetsforrent: result})
   })
 })
 
