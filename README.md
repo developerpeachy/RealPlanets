@@ -1,3 +1,4 @@
-# Real Planets for Nod.
+# Real Planets
 
-npm run dev to start the server 
+- Imagine real estate but for planets.
+- npm run dev to start the server.
