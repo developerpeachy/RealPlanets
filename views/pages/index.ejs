@@ -4,14 +4,16 @@
   <% include ../partials/head %>
 </head>
 <body>
-  <div class="container"> 
-    <header> 
-      <% include ../partials/header %>
-    </header>
-    <main> 
-      Welcome to index
-    </main>
-    We can add planets here for sale:
+  <header> 
+    <% include ../partials/header %>
+  </header>
+  <div class="bd-masthead">
+          <div class="container">
+            <h1 class="display-3">Adding Planets</h1>
+            <p class="lead">Add your planets here</p>
+          </div>
+        </div>
+  <div class="container">
     <ul class="planets">
     <% for(var i=0; i<planets.length; i++) {%>
       <li class="planet">
@@ -33,9 +35,10 @@
       <input type="text" placeholder="agent" name="agent">
       <button type="submit">Submit</button>
     </form>
-    <footer> 
-      <% include ../partials/footer %>
-    </footer>
+    
   </div>
+  <footer> 
+    <% include ../partials/footer %>
+  </footer>
 </body>
 </html>

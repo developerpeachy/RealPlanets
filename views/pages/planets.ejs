@@ -5,18 +5,35 @@
     </head>
 
     <body>
-        <div class="container">
-            <header>
-                <% include ../partials/header %>
-            </header>
-
-            <main>
-                <h1>Planets for Sale</h1>
-            </main>
-
-            <footer>
-                <% include ../partials/footer %>
-            </footer>
+        <header>
+            <% include ../partials/header %>
+        </header>
+        <div class="bd-masthead">
+          <div class="container">
+            <h1 class="display-3">Planets for Sale</h1>
+            <p class="lead">Find your dream home today. These planets have just been listed for sale. </p>
+          </div>
         </div>
+        <div class="container"> 
+            <div class="planets">
+                <% for(var i=0; i<planets.length; i++) {%>
+                <div class="cards"> 
+                    <img class="card-img-top" src="<%= planets[i].image %>" alt="Card image cap">
+                    <div class="card-block">
+                        <p class="card-text"><%= planets[i].name %></p>
+                        <p class="card-text">
+                            Description: <%= planets[i].description %>
+                        </p>
+                        <p class="card-text"> 
+                            Price: <%= planets[i].price %>
+                        </p>
+                    </div>
+                </div>
+                <% } %>
+            </div>
+        </div>
+        <footer>
+            <% include ../partials/footer %>
+        </footer>
     </body>
 </html>

@@ -44,7 +44,7 @@ app.post('/planets', (req, res) => {
   db.collection('planets').save(req.body, (err, result) => {
     if (err) return console.log(err)
     console.log('saved planet to database')
-    res.redirect('pages/index')
+    res.redirect('/')
   })
 })
 
@@ -55,7 +55,10 @@ app.get('/home', (req, res) => {
 
 //planets for sale page
 app.get('/planets', (req, res) => {
-    res.render('pages/planets')
+    db.collection('planets').find().toArray((err, result) => {
+    if (err) return console.log(err)
+    res.render('pages/planets', {planets: result})
+  })
 })
 
 
