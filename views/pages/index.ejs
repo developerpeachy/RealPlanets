@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <% include ../partials/head %>
+</head>
+<body>
+  <div class="container"> 
+    <header> 
+      <% include ../partials/header %>
+    </header>
+    <main> 
+      Welcome to index
+    </main>
+    We can add planets here for sale:
+    <ul class="planets">
+    <% for(var i=0; i<planets.length; i++) {%>
+      <li class="planet">
+        <span><%= planets[i].name %></span>
+        <span><%= planets[i].price %></span>
+        <span><%= planets[i].image %></span>
+        <span><%= planets[i].description %></span>
+        <span><%= planets[i].agent %></span>
+      </li>
+    <% } %>
+    </ul>
+
+    <h2>Add a Planet</h2>
+    <form action="/planets" method="POST">
+      <input type="text" placeholder="name" name="name">
+      <input type="text" placeholder="price" name="price">
+      <input type="text" placeholder="image" name="image">
+      <input type="text" placeholder="description" name="description">
+      <input type="text" placeholder="agent" name="agent">
+      <button type="submit">Submit</button>
+    </form>
+    <footer> 
+      <% include ../partials/footer %>
+    </footer>
+  </div>
+</body>
+</html>
