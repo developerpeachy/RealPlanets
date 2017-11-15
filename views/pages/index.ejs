@@ -8,34 +8,81 @@
     <% include ../partials/header %>
   </header>
   <div class="bd-masthead">
-          <div class="container">
-            <h1 class="display-3">Adding Planets</h1>
-            <p class="lead">Add your planets here</p>
-          </div>
-        </div>
-  <div class="container">
-    <ul class="planets">
-    <% for(var i=0; i<planets.length; i++) {%>
-      <li class="planet">
-        <span><%= planets[i].name %></span>
-        <span><%= planets[i].price %></span>
-        <span><%= planets[i].image %></span>
-        <span><%= planets[i].description %></span>
-        <span><%= planets[i].agent %></span>
-      </li>
-    <% } %>
-    </ul>
+    <div class="container">
+      <h1 class="display-3">Selling a Planet?</h1>
+      <p class="lead">Post your planet for sale here</p>
+    </div>
+  </div>
 
-    <h2>Add a Planet</h2>
-    <form action="/planets" method="POST">
-      <input type="text" placeholder="name" name="name">
-      <input type="text" placeholder="price" name="price">
-      <input type="text" placeholder="image" name="image">
-      <input type="text" placeholder="description" name="description">
-      <input type="text" placeholder="agent" name="agent">
-      <button type="submit">Submit</button>
-    </form>
-    
+  <div class="container">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Add a Planet to sell</h3>
+      </div>
+      <div class="panel-body">
+        <form action="/planets" method="POST">
+
+          <div class="row">
+            <div class="col-lg-6"> 
+              <div class="form-group"> 
+                <label for="name">Name of Planet</label>
+                <input type="text" class="form-control" placeholder="Name" name="name">
+              </div>
+            </div>
+            <div class="col-lg-6"> 
+              <div class="form-group"> 
+                <label for="price">Selling price</label>
+                <input type="text" class="form-control" placeholder="Price" name="price">
+              </div>
+            </div>
+          </div>
+
+          <div class="row"> 
+           <div class="col-lg-6"> 
+            <div class="form-group"> 
+              <label for="url">Image Link</label>
+              <input type="text" class="form-control" placeholder="Place URL here" name="image">
+            </div>
+           </div>
+            <div class="col-lg-6">
+              <div class="form-group"> 
+                <label for="agent">Agent</label>
+                <input type="text" class="form-control" placeholder="Agent name" name="agent">
+              </div>
+            </div> 
+          </div>
+
+          <div class="row">
+            <div class="col-lg-12"> 
+              <div class="form-group">
+                <label for="description">Short description of the planet</label>
+                <textarea class="form-control" rows="3" name="description"> </textarea> 
+              </div>
+            </div>
+          </div>
+
+            <button type="submit" class="btn btn-primary">Submit</button>
+          
+        </form>
+      </div>
+    </div>
+      <h2> For Sale </h2>
+
+        <% for(var i=0; i<planets.length; i++) {%>        
+          <div class="card-block" style="width: 578px;"> 
+              <h4 class="card-title"><%= planets[i].name %></h4>
+              <img class="card-img-top" class="img-responsive" src="<%= planets[i].image %>" style="width: 578px; height: 350px;">
+          </div>
+          <ul class="list-group list-group-flush" style="width: 578px;">
+              <li class="list-group-item">Description: <%= planets[i].description %></li>
+              <li class="list-group-item">Price: <%= planets[i].price %> </li>
+              <li class="list-group-item">Agent: <%= planets[i].agent %></li>
+          </ul>
+          <div class="card-block"> 
+            <a href="#" class="btn btn-primary" role="button">Update</a>
+            <a href="#" class="btn btn-danger" role="button">Delete</a>
+          </div>
+        <% } %>
   </div>
   <footer> 
     <% include ../partials/footer %>

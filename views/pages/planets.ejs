@@ -15,22 +15,22 @@
           </div>
         </div>
         <div class="container"> 
-            <div class="planets">
-                <% for(var i=0; i<planets.length; i++) {%>
-                <div class="cards"> 
-                    <img class="card-img-top" src="<%= planets[i].image %>" alt="Card image cap">
-                    <div class="card-block">
-                        <p class="card-text"><%= planets[i].name %></p>
-                        <p class="card-text">
-                            Description: <%= planets[i].description %>
-                        </p>
-                        <p class="card-text"> 
-                            Price: <%= planets[i].price %>
-                        </p>
-                    </div>
-                </div>
-                <% } %>
-            </div>
+            <% for(var i=0; i<planets.length; i++) {%>  
+                <div class="panel panel-default" style="width: 578px;">     
+                        <div class="panel-heading"> 
+                            <h4><%= planets[i].name %></h4>
+                        </div>
+                        <div class="panel-body"> 
+                            <img src="<%= planets[i].image %>" style="width: 500px; height: 300px;">
+                            <ul class="list-group">
+                                <li class="list-group-item">Description: <%= planets[i].description %></li>
+                                <li class="list-group-item">Price: <%= planets[i].price %> </li>
+                                <li class="list-group-item">Agent: <%= planets[i].agent %></li>
+                            </ul>
+                        </div>
+                        <div class="panel-footer">Like what you see? Contact the agent today.</div>
+                </div> 
+            <% } %> 
         </div>
         <footer>
             <% include ../partials/footer %>

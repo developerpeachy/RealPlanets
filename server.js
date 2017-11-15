@@ -32,7 +32,7 @@ app.use(stylus.middleware({
     compile: compile
 }))
 
-//index page
+//index page - Planets
 app.get('/', (req, res) => {
   db.collection('planets').find().toArray((err, result) => {
     if (err) return console.log(err)
@@ -47,6 +47,15 @@ app.post('/planets', (req, res) => {
     res.redirect('/')
   })
 })
+
+//index page - Planets for Rent.
+// app.post('/rentedPlanets', (req, res) => {
+//   db.collection('rentedPlanets').save(req.body, (err, result) => {
+//     if (err) return console.log(err)
+//     console.log('saved rented planet to database')
+//     res.redirect('/')
+//   })
+// })
 
 //home page
 app.get('/home', (req, res) => {
