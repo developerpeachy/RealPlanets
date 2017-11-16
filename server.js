@@ -27,10 +27,7 @@ app.use(bodyParser.urlencoded({extended: true}))
 app.use(bodyParser.json())
 app.use(express.static('/public'))
 
-app.use(stylus.middleware({
-    src: __dirname + '/public',
-    compile: compile
-}))
+
 
 //index page - Planets for sale (planets)
 app.get('/', (req, res) => {
