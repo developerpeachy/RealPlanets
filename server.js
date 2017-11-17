@@ -25,19 +25,24 @@ function compile(str, path) {
 }
 app.use(bodyParser.urlencoded({extended: true}))
 app.use(bodyParser.json())
-app.use(express.static('/public'))
+app.use(express.static(__dirname + '/public'));
 
 
 
-//index page - Planets for sale (planets)
+//index page == home page
 app.get('/', (req, res) => {
+    res.render('pages/home')
+})
+
+//sell page - display so we can add planets to sell
+app.get('/sell', (req, res) => {
   db.collection('planets').find().toArray((err, result) => {
     if (err) return console.log(err)
-    res.render('pages/index', {planets: result})
+    res.render('pages/sell', {planets: result})
   })
 })
 
-//get request for rental planets
+//rent page - display so we can add planets to rent
 app.get('/rent', (req, res) => {
   db.collection('planetsforrent').find().toArray((err, result) => {
     if (err) return console.log(err)
@@ -45,46 +50,39 @@ app.get('/rent', (req, res) => {
   })
 })
 
-//posting all planets to the index page 
-app.post('/planets', (req, res) => {
+//Creating a new planet to sell
+app.post('/sell', (req, res) => {
   db.collection('planets').save(req.body, (err, result) => {
     if (err) return console.log(err)
-    console.log('saved planet to database')
-    alert("Planet has been posted for Sale");
-    res.redirect('/planets')
+      console.log('saved planet to sell on db')
+      res.redirect('/planetsforsale')
   })
 })
 
-//index page - adding Planets for Rent.
-app.post('/planetsforrent', (req, res) => {
+//Creating a new planet for rent 
+app.post('/rent', (req, res) => {
   db.collection('planetsforrent').save(req.body, (err, result) => {
-    if (err) 
-      {
+    if (err)
         return console.log(err)
-        res.redirect('/rent')
-      }
-      else {
-        console.log('saved rented planet to database')
+      console.log('saved rented planet in the db')
         res.redirect('/planetsforrent')
-      }
   })
 })
 
-
-//home page
-app.get('/home', (req, res) => {
-    res.render('pages/home')
+//listing a planet - provides the route for listing a planet 
+app.get('/listingaproperty', (req, res) => {
+    res.render('pages/listingaproperty')
 })
 
-//posting planets for sale page
-app.get('/planets', (req, res) => {
+//displaying planets for sale on the planetsforsale page
+app.get('/planetsforsale', (req, res) => {
     db.collection('planets').find().toArray((err, result) => {
     if (err) return console.log(err)
-    res.render('pages/planets', {planets: result})
+    res.render('pages/planetsforsale', {planets: result})
   })
 })
 
-//posting all rental planets on the platnetsforrent page.
+//displaying planets for rent on the platnetsforrent page.
 app.get('/planetsforrent', (req, res) => {
     db.collection('planetsforrent').find().toArray((err, result) => {
     if (err) return console.log(err)

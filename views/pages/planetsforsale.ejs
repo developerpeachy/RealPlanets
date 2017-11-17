@@ -8,29 +8,16 @@
         <header>
             <% include ../partials/header %>
         </header>
-        <div class="bd-masthead" style="color: #ecf0f1;">
+        <div class="bd-masthead">
           <div class="container">
             <h1 class="display-3">Planets for Sale</h1>
             <p class="lead">Find your dream home today. These planets have just been listed for sale. </p>
           </div>
         </div>
-        <div class="container" style="float:left; width: 30%; margin-left: 79px; color: white;"> 
-            <div class="panel panel-default" style="width: 400px;">     
-                        <div class="panel-heading"> 
-                            <h4>Refine Search</h4>
-                        </div>
-                        <div class="panel-body">
-                           <a href="/planetsforrent"><button type="submit" class="btn btn-secondary" style="background-color: black;">Rental</button></a>
-                           <a href="/"><button type="submit" class="btn btn-secondary" style="background-color: black;">Post a Planet</button></a>
-                           <a href="/rent"><button type="submit" class="btn btn-secondary" style="background-color: black;">Post a rental</button></a>
-                        </div>
-                </div> 
-        </div>
-        </div>
         
-        <div class="container" style="float:right; width: 60%;"> 
+        <div class="container"> 
             <% for(var i=0; i<planets.length; i++) {%>  
-                <div class="panel panel-default" style="width: 578px;">     
+                <div class="panel panel-default" style="width: 100%;">     
                         <div class="panel-heading"> 
                             <h4><%= planets[i].name %></h4>
                         </div>

@@ -1,6 +1,59 @@
-.container{
-	background-color: pink;
+.body {
+	background-color: black;
 }
+
+.a:hover{
+	color:grey;
+}
+
+.a:link {
+	color: white;
+}
+
+.a:active {
+	color: white;
+}
+
+.a:visited {
+	color: white;
+}
+
+.container{
+	background-color: black;
+}
+
+#home{
+	text-align: center; 
+	align-content: center; 
+	background-image: url(https://images.pond5.com/simple-star-space-background-effect-footage-023768280_prevstill.jpeg); 
+	color: #ecf0f1; 
+	height: 100vh; 
+	padding-top: 20%;
+}
+
+.bd-masthead{
+	color: #ecf0f1;
+}
+
+#listing{
+	text-align: center; 
+	align-content: center; 
+	color: #ecf0f1; 
+	height: 100vh; 
+	padding-top: 20%;
+}
+
+#listBtn{
+	background-color: black;
+	color: white;
+}
+
+#rent {
+	background-color: black;
+	color: white;
+}
+
+
 
 .home-container {
 	padding: 50px 50px 50px 50px;
