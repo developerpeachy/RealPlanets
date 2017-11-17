@@ -1,6 +1,3 @@
-.body {
-	background-color: black;
-}
 
 .a:hover{
 	color:grey;
@@ -48,11 +45,15 @@
 	color: white;
 }
 
+#cancelBtn{
+	background-color: black;
+	color: red;
+}
+
 #rent {
 	background-color: black;
 	color: white;
 }
-
 
 
 .home-container {

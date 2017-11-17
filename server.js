@@ -36,36 +36,29 @@ app.get('/', (req, res) => {
 
 //sell page - display so we can add planets to sell
 app.get('/sell', (req, res) => {
-  db.collection('planets').find().toArray((err, result) => {
-    if (err) return console.log(err)
-    res.render('pages/sell', {planets: result})
+    res.render('pages/sell')
   })
-})
 
 //rent page - display so we can add planets to rent
 app.get('/rent', (req, res) => {
-  db.collection('planetsforrent').find().toArray((err, result) => {
-    if (err) return console.log(err)
-    res.render('pages/rent', {planetsforrent: result})
+    res.render('pages/rent')
   })
-})
 
 //Creating a new planet to sell
 app.post('/sell', (req, res) => {
   db.collection('planets').save(req.body, (err, result) => {
     if (err) return console.log(err)
-      console.log('saved planet to sell on db')
-      res.redirect('/planetsforsale')
+    console.log('saved planet to sell on db')
+    res.redirect('/planetsforsale')
   })
 })
 
 //Creating a new planet for rent 
 app.post('/rent', (req, res) => {
   db.collection('planetsforrent').save(req.body, (err, result) => {
-    if (err)
-        return console.log(err)
-      console.log('saved rented planet in the db')
-        res.redirect('/planetsforrent')
+    if (err)return console.log(err)
+    console.log('saved rented planet in the db')
+    res.redirect('/planetsforrent')
   })
 })
 

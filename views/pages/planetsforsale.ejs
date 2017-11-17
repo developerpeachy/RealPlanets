@@ -17,7 +17,7 @@
         
         <div class="container"> 
             <% for(var i=0; i<planets.length; i++) {%>  
-                <div class="panel panel-default" style="width: 100%;">     
+                <div class="panel panel-default" style="width: 50%;">     
                         <div class="panel-heading"> 
                             <h4><%= planets[i].name %></h4>
                         </div>
@@ -29,7 +29,7 @@
                                 <li class="list-group-item">Agent: <%= planets[i].agent %></li>
                             </ul>
                         </div>
-                        <div class="panel-footer">Like what you see? Contact the agent today.</div>
+                        <div class="panel-footer">Like what you see? Contact <%= planets[i].agent %>  today.</div>
                 </div> 
             <% } %> 
         </div>
